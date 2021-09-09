@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { setupAPIClient } from "../services/api";
 import { api } from "../services/apiClient";
+import { AuthTokenError } from "../services/errors/AuthTokenError";
 import { withSSRauth } from "../utils/withSSRauth";
 
 export default function Dashboard(){
@@ -24,8 +25,8 @@ export default function Dashboard(){
 
 export const GetServerSideProps = withSSRauth( async(ctx) =>{
     const apiClient = setupAPIClient(ctx);
-    const response = await apiClient.get('/me');
-    console.log(response.data);
+    const response = await apiClient.get('/me')
+
     return {
         props:{}
     }
