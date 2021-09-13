@@ -9,7 +9,7 @@ import { withSSRauth } from "../utils/withSSRauth";
 
 export default function Dashboard(){
 
-    const { user } = useContext(AuthContext);
+    const { user, singOut } = useContext(AuthContext);
 
 
     useEffect(() => {
@@ -22,6 +22,8 @@ export default function Dashboard(){
         <div>
             <h1>PAGINA DE DASHBOARD</h1>
             <h2>{user.email}</h2>
+
+            <button onClick={singOut}>Sign out</button>
 
             <Can permissions={['metrics.list']}>
                 <div> Métricas permitidas </div>
